@@ -35,14 +35,16 @@ You can check the documention how to use the API and see some examples : [Networ
 	for windows:
 	- ***environment name***\Scripts\activate.bat - ex: `env\Scripts\activate.bat`
 4. Install the packages with pip: `pip install -r requirements.txt`	
-5.  Migrate the tables to database:
+5.  Migrate the tables/data to database:
  - Make sure you have created postregSQL database and configured database parameters in settings.py
 	- for unix or macos: `python3 manage.py migrate`
 	- for windows: `py manage.py migrate`
-7. Run the program :
+ - Upload data from csv file to database:
+ 	- for unix or macos: `python3 manage.py load_csv`
+	- for windows: `py manage.py migrate load_csv`
+6. Run the program :
 	- for unix or macos: `python3 manage.py runserver`
 	- for windows: `py manage.py runserver`
-	
-	***Note*** : The default port will open at 8000.
+		
 
 **External file**: mobile_operator.csv has been used to located network provider and it's coverage which should be uploaded to the database.
