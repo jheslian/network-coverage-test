@@ -28,7 +28,7 @@ You can check the documention how to use the API and see some examples : [Networ
 **How to run:**
  1. Clone the repository on the terminal or command prompt : `git clone https://github.com/jheslian/network-coverage-test.git`
  2. Create a virtual environment with "venv"  
-	 - `cd papernest` :  to access the folder 
+	 - `cd network-coverage-test` :  to access the folder 
 	 - python -m venv ***environment name*** : to create the virtual environment - exemple: `python -m venv env`
 3. Activate the virtual environment:
 	for unix or macos:
