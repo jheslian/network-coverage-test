@@ -47,4 +47,4 @@ You can check the documention how to use the API and see some examples : [Networ
 	- for windows: `py manage.py runserver`
 		
 
-**External file**: mobile_operator.csv has been used to located network provider and it's coverage which should be uploaded to the database.
+**External file**: mobile_operator.csv has been used to locate network provider and it's coverage which should be uploaded to the database.
