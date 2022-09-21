@@ -46,6 +46,8 @@ You can check the documention how to use the API and see some examples : [Networ
 6. Run the program :
 	- for unix or macos: `python3 manage.py runserver`
 	- for windows: `py manage.py runserver`
-		
+
+You could also run some test with `python3 manage.py test`		
 
 **External file**: mobile_operator.csv has been used to locate network provider and it's coverage which should be uploaded to the database.
+
