@@ -1,6 +1,18 @@
 from pyproj import Proj, transform
 from rest_framework.response import Response
+from src.models import Network
 import requests
+
+
+def create_networks():
+    data = {
+        20801: 'Orange',
+        20810: 'SFR',
+        20815: 'Free',
+        20820: 'Bougyues',
+    }
+    for k, v in data.items():
+        Network.objects.create(code=k, name=v)
 
 def convert_lambert93_to_wgs84(x, y):
     """

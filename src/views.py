@@ -45,10 +45,10 @@ class NetworkMobileListView(generics.ListAPIView):
                     coordinate_y__lte=round(coordinates[0] + 0.02, 2),
                     coordinate_y__gte=round(coordinates[0] - 0.02, 2)).distinct('operator__code')
             serializer = self.get_serializer(queryset, many=True)
-            if len(queryset) == 0:
+            if not serializer.data:
 
                 return Response({
-                    f"Message: No approximately network on this {address.replace('+', ' ')}, {zipcode}."},
+                    f"Message: No approximately network in this address: {address.replace('+', ' ')}, {zipcode}."},
                     status=200)
             context[dict(row)['properties']['city']] = serializer.data
         if len(context) > 1:

@@ -4,18 +4,9 @@ import requests
 # Create your tests here.
 from django.urls import reverse
 from src.models import NetworkMobile, Network
-from src.utils import convert_lambert93_to_wgs84
+from src.utils import convert_lambert93_to_wgs84, create_networks
 
 
-def create_networks():
-    data = {
-        20801: 'Orange',
-        20810: 'SFR',
-        20815: 'Free',
-        20820: 'Bougyues',
-    }
-    for k, v in data.items():
-        Network.objects.create(code=k, name=v)
 
 
 class ViewsTestCase(TestCase):

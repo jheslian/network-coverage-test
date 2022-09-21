@@ -4,7 +4,7 @@
 
 from django.core.management import BaseCommand
 from src.models import Network, NetworkMobile
-from src.utils import convert_lambert93_to_wgs84
+from src.utils import convert_lambert93_to_wgs84, create_networks
 import csv
 
 
@@ -13,7 +13,11 @@ import csv
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        Network.objects.all().delete()
         NetworkMobile.objects.all().delete()
+
+        # Add network data to Network
+        create_networks()
         CSV_PATH = 'mobile_operator.csv'
         fix_type = {'Operateur': int, 'X': int, 'Y': int, '2G': int, '3G': int, '4G': int}
 
@@ -22,7 +26,6 @@ class Command(BaseCommand):
                 try:
                     row = {key: fix_type[key](value) for key, value in row.items()}
                     data = convert_lambert93_to_wgs84(row['X'], row['Y'])
-
                     operator = Network.objects.get(code=row['Operateur'])
                     NetworkMobile.objects.create(
                         operator=operator,
@@ -35,8 +38,7 @@ class Command(BaseCommand):
                         coordinate_y=format(data['coordinate_y'], '.2f')
                     )
                     print(f"Line {i} has been uploaded")
-                except Exception as err:
-                    if type(err) is ValueError or type(err) is TypeError:
-                        print(f"Line {i+1} cannot be proccess.")
-                    return print("Something went wrong!")
+                except Exception:
+                    print(f"Line {i+1} cannot be proccess.")
+                    
             print("Data uploaded successfully!")
